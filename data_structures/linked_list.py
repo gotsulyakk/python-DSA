@@ -106,6 +106,22 @@ class LinkedList:
             return True
         return False
 
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+
+        return True
+
 
 if __name__ == "__main__":
     # Create a new Linked List
@@ -146,3 +162,13 @@ if __name__ == "__main__":
     value = 666
     ll.set_value(index, value)
     print(f"New value of index {index} is {ll.get(index).value}")
+
+    # Insert
+    index = 2
+    value = 777
+    print(f"Insert {value} on index {index}")
+    print("Before insert:")
+    ll.print_list()
+    ll.insert(index, value)
+    print("After insert:")
+    ll.print_list()
