@@ -1,1 +1,1 @@
-# python-DSA
+# Data Structures and Algorithms playground in Python
